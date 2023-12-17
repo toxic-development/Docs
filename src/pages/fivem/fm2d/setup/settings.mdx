@@ -1,0 +1,162 @@
+import { Steps } from 'nextra/components'
+import { Tabs } from 'nextra/components'
+import { Callout } from 'nextra/components'
+import { Cards, Card } from '@/components/card.tsx'
+
+## Bot Settings
+
+You can if you want to edit the bots settings and assign it your own basic info such as
+name, avatar and default user avatar, however this is not required!
+
+### In this section
+
+<Cards>
+    <Card title="Name" href="/fivem/fm2d/setup/settings#setting-the-bots-name" arrow="true" />
+    <Card title="Avatar(s)" href="/fivem/fm2d/setup/settings#setting-the-bots-avatars" arrow="true" />
+    <Card title="Updates" href="/fivem/fm2d/setup/settings#configure-update-checks" arrow="true" />
+    <Card title="Embeds" href="/fivem/fm2d/setup/settings#configure-message-embeds" arrow="true" />
+</Cards>
+
+---
+
+## Setting the bots name
+
+Information regarding assigning the bot a new name in discord.
+
+<Callout type="info" emoji="ℹ️">
+    You can skip this step if you are fine with the bots name being `SYSTEM` for all of its messages.
+</Callout>
+
+<Steps>
+  ### Open the bots settings
+  Find and open the `settings.lua` file
+  ![Hmm](/examples/fivem2discord/settings-file.png)
+
+  ### Find the following line:
+  ```lua filename="settings.lua | Line: 11" {3}
+  SystemName = 'SYSTEM',
+  ```
+
+  ### Add your name
+  Assign it whatever you like for example:
+  ```lua filename="settings.lua | Line: 11" {3}
+  SystemName = 'Toxic Dev Test'
+  ```
+
+  ### Save and profit!
+  Save your changes and restart the server/resource, your changes can be found
+  inside the channel(s) where the bot sends its logs!
+
+  ![Hmm](/examples/fivem2discord/settings.png)
+</Steps>
+
+---
+
+## Setting the bots avatar(s)
+Information regarding assigning the bot a new avatar/logo and default user logo.
+
+<Callout type="info" emoji="ℹ️">
+   You can skip this step if you are fine with the bot using our default bot and user avatar(s)
+</Callout>
+
+<Steps>
+   ### Open the bots settings
+   Find and open the `settings.lua` file
+   ![Hmm](/examples/fivem2discord/settings-file.png)
+
+   ### Find the following line:
+   ```lua filename="settings.lua | line: 9" {3}
+   SystemAvatar = 'https://toxicdev.me/images/fivem/FiveM-Logo.png',
+   ```
+
+   ### Update the avatar link to one of your choice, example:
+   ```lua filename="settings.lua | Line: 9" {3}
+   SystemAvatar = 'https://wiki.fivem.net/w/images/d/db/FiveM-Wiki.png'
+   ```
+
+   ### Save and profit!
+   Save your changes and restart the server/resource, your changes can be found
+   inside the channel(s) where the bot sends its logs!
+
+   ![Hmm](/examples/fivem2discord/settings.png)
+</Steps>
+
+---
+
+## Configure update checks
+Information regarding disabling the scripts update checks!
+
+<Callout type="error" emoji="🚫">
+   Disabling this feature is not recommended however if you do you should know
+   that it will be up to you alone to regularly check for new versions of the script.
+</Callout>
+
+<Steps>
+   ### Open the bots settings
+   Find and open the `settings.lua` file
+   ![Hmm](/examples/fivem2discord/settings-file.png)
+
+   ### Find the following line:
+   ```lua filename="settings.lua | Line: 12" {3}
+   UpdateCheck = true,
+   ```
+
+   ### Add your name
+   Assign it a new value (true/false):
+   ```lua filename="settings.lua | Line: 12" {3}
+   UpdateCheck = false,
+   ```
+
+   ### Save and profit!
+   Save your changes and restart the server/resource, if you enabled the update checks you should
+   see them in your servers startup logs, or in the logs when you start/restart the resource! if you
+   disabled the checks these logs will no longer show!
+   ![Hmm](/examples/fivem2discord/server-logs.png)
+</Steps>
+
+---
+
+## Configure message embeds
+Information regarding enabling/disabling discord message embeds!
+
+<Callout type="info" emoji="ℹ️">
+   This setting is entirely up to you if you want it enabled or not!
+</Callout>
+
+<Steps>
+   ### Open the bots settings
+   Find and open the `settings.lua` file
+   ![Hmm](/examples/fivem2discord/settings-file.png)
+
+   ### Find the following line:
+   ```lua filename="settings.lua | Line: 14" {3}
+      Messages = {
+         UseEmbeds = false, -- Send the messages to discord as an embed
+         EmbedImage = 'https://toxicdev.me/images/fivem/FiveM-Logo.png'
+      },
+   ```
+
+   ### Add your name
+   Assign it a new value (true/false):
+         
+   ```lua filename="settings.lua | Line: 14" {3}
+      Messages = {
+         UseEmbeds = true, -- Send the messages to discord as an embed
+         EmbedImage = 'https://cdn.discordapp.com/attachments/653733403841134600/1101375870955966514/FiveM.png'
+      },
+   ```
+
+   ### Save and profit!
+   Save your changes and restart the sever/resource, you can find the changes
+   in the channel(s) where the bot sends messages/logs.
+
+   ### Examples
+
+   #### Embeds On
+   ![Hmm](/examples/fivem2discord/embeds-on.png)
+
+   #### Embeds Off
+   ![Hmm](/examples/fivem2discord/embeds-off.png)
+</Steps>
+
+---

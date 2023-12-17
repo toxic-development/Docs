@@ -1,0 +1,44 @@
+/** 
+   ALL OF THE RULES DEFINED HERE SHOULD BE LEFT ON
+   ERROR TO ENFORCE PROPER SPEC FOR ALL TYPESCRIPT,
+   NEXTJS AND REACT BASED FILES!
+*/
+{
+    "extends": ["next", "next/core-web-vitals"],
+    "plugins": ["unused-imports"],
+    "rules": {
+        /** 
+           NEXTJS BASED ESLINT RULES 
+        */
+        "@next/next/no-img-element": "error",
+        "@next/next/no-css-tags": "error",
+        "@next/next/no-sync-scripts": "error",
+        "@next/next/no-html-link-for-pages": "error",
+        "@next/next/google-font-display": "error",
+        /** 
+           NO UNUSED IMPORTS FOR ALL TS FILES 
+        */
+        "unused-imports/no-unused-imports-ts": "error",
+        /** 
+           ENFORCE FUNCTION NAMES FOR ASYNC FUNCTIONS 
+        */
+        "import/no-anonymous-default-export": "error",
+        /** 
+           REACT BASED ESLINT RULES 
+        */
+        "react/display-name": "error",
+        "react/no-children-prop": "error",
+        "react/no-unknown-property": "error",
+        "react/no-unescaped-entities": "error",
+        /** 
+           LEAVE THESE RULES OFF (BREAKS FUNCTIONALITY)
+           OR NEED TO LOOK INTO React.useCallback() 
+         */
+        "react-hooks/exhaustive-deps": "off",
+        "react-hooks/rules-of-hooks": "off",
+        /** ------------------------------------------ */
+        "react/jsx-no-target-blank": "error",
+        "jsx-a11y/alt-text": "error",
+        "react/jsx-key": "error"
+    }
+}

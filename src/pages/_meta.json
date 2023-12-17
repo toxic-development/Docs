@@ -1,0 +1,44 @@
+{
+    "soon": {
+        "title": "Coming Soon",
+        "type": "page",
+        "display": "hidden"
+    },
+    "404": {
+        "title": "404",
+        "type": "page"
+    },
+    "500": {
+        "title": "500",
+        "type": "page"
+    },
+    "index": {
+        "title": "Intro",
+        "type": "page",
+        "display": "hidden"
+    },
+    "home": {
+        "title": "Home",
+        "type": "page",
+        "href": "/"
+    },
+    "fivem": {
+        "title": "FiveM",
+        "type": "page"
+    },
+    "discord": {
+        "title": "Discord",
+        "type": "page",
+        "href": "/soon"
+    },
+    "guides": {
+        "title": "Guides",
+        "type": "page",
+        "href": "/soon"
+    },
+    "faqs": {
+        "title": "FAQ's",
+        "type": "page",
+        "href": "/soon"
+    }
+}

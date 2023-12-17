@@ -1,0 +1,84 @@
+import { Steps } from 'nextra/components'
+import { Tabs } from 'nextra/components'
+import { Callout } from 'nextra/components'
+import { Cards, Card } from '@/components/card.tsx'
+
+# Webhooks
+
+A brief introduction to configuring your webhook settings.
+
+## In this section
+
+<Cards>
+    <Card title="Create a webhook" href="/fivem/fm2d/setup/webhooks#create-a-webhook" arrow="true" />
+    <Card title="Add your webhooks" href="/fivem/fm2d/setup/webhooks#add-your-webhooks" arrow="true" />
+</Cards>
+
+---
+
+## Create a webhook
+
+<Steps>
+   <Callout type="info" emoji="ℹ️">
+      If you want discord logs for sever events, joins/leaves, and chat notifications follow these steps.
+   </Callout>
+
+### Create A discord channel
+
+Create a new discord channel and name it `System Logs`, `FiveM Logs` or honestly whatever you prefer, the name doesn't matter!
+
+### Create a channel integration
+
+Go to your channels settings and select the `Integrations` tab and then `Webhooks`
+![Hmm](/examples/discord/integrations.png)
+
+### Create a new webhook
+
+In integrations click on `Create Webhook` and set your Webhook/Bots name and avatar/picture
+
+### Copy your webhook
+
+Click the `Copy Webhook URL` button and make sure you save it somewhere, we are gonna need it
+in the next section of this webhook guide.
+
+### Save the webhook
+
+Click on the big green `save` button and move onto [Add your webhooks](/fivem/fm2d/setup/webhooks#add-your-webhooks)
+
+</Steps>
+
+---
+
+## Add your webhooks
+
+<Steps>
+         <Callout type="info" emoji="ℹ️">
+            If you want System Infos, Killing Logs and Chat in three separate channels, replace the webhooks links 
+            I have in lines `1`, `2` & `3` with the webhooks link for each individual channel. 
+            Otherwise, create just one Webhook and replace these 3 lines with that webhook
+         </Callout>
+
+         ### Create a webhook
+         If you haven't done so already head over to the [Create a webhook](/fivem/fm2d/setup/webhooks#create-a-webhook).
+
+         ### Paste your webhook url(s)
+         Open the `server/s_config.lua` file using `visual studio code`, `node pad` or whatever you prefer
+         and add your webhook(s) to their respective lines (see example config below).
+
+         <Callout>
+            If you do not want to use any of these logs simply leave their values empty.
+         </Callout>
+
+         ```lua filename="server/s_config.lua" {3}
+          S_CONFIG = {
+            DiscordServerLogs: 'WEBHOOK_LINK_HERE' --[[ Used for server logs like joins and leaves ]]
+            DiscordKillingLogs: 'WEBHOOK_LINK_HERE' --[[ Used for kill logs like when a player dies or commits suicide ]]
+            DiscordWebhookChat: 'WEBHOOK_LINK_HERE' --[[ User for logging in game chat messages (if configured) ]]
+          }
+         ```
+
+         ### Save and profit
+         When you have edited the config to your liking you can save and close it.
+
+
+      </Steps>

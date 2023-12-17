@@ -1,0 +1,178 @@
+import { Steps } from 'nextra/components'
+import { Callout } from 'nextra/components'
+import { Cards, Card } from '@/components/card.tsx'
+
+# Commands Setup
+Simple introduction to configuring the `commands` sections of the resources settings file.
+
+### In this section
+
+<Cards>
+    <Card title="Special Commands" href="/fivem/fm2d/setup/commands#special-commands" arrow="true" />
+    <Card title="Blacklisted Commands" href="/fivem/fm2d/setup/commands#blacklisted-commands" arrow="true" />
+    <Card title="Own Commands" href="/fivem/fm2d/setup/commands#own-commands" arrow="true" />
+    <Card title="Text To Speech" href="/fivem/fm2d/setup/commands#text-to-speech-commands" arrow="true" />
+</Cards>
+
+---
+
+## Special Commands
+
+> Special commands will be printed differently in discord, depending on what you set it to
+
+### Formatting
+
+<Callout type="info" emoji="ℹ️">
+    Our special commands system follows basic markdown syntax, you can use these in your command message(s) to emit the
+    syntax results in discord.
+</Callout>
+
+|        Syntax         |                     Description                      |          Example           |
+| :-------------------: | :--------------------------------------------------: | :------------------------: |
+|    `**YOUR_TEXT**`    |              Make Text bold in Discord               |       **YOUR_TEXT**        |
+|   `***YOUR_TEXT***`   |       Make Text italicized and bold in Discord       |      **_YOUR_TEXT_**       |
+|    `__YOUR_TEXT__`    |           Make text underlined in Discord            |    <ins>YOUR_TEXT</ins>    |
+|   `__*YOUR_TEXT*__`   |    Make text underlined and italicized in Discord    |   <ins>_YOUR_TEXT_</ins>   |
+|  `__**YOUR_TEXT**__`  |       Make text underlined and bold in Discord       |  <ins>**YOUR_TEXT**</ins>  |
+| `__***YOUR_TEXT***__` | Make text underlined, italicized and bold in Discord | <ins>**_YOUR_TEXT_**</ins> |
+|    `~~YOUR_TEXT~~`    |         Make text strike through in Discord          |       ~~YOUR_TEXT~~        |
+
+### Params
+
+|         Param          |                 Description                 |
+| :--------------------: | :-----------------------------------------: |
+| `USERNAME_NEEDED_HERE` | Will be replaced with the players username. |
+|  `USERID_NEEDED_HERE`  | Will be replaced with the players user id.  |
+
+### Setup
+
+<Steps>      
+   #### Open the bots settings
+   Find and open the `settings.lua` file
+   ![Hmm](/examples/fivem2discord/settings-file.png)
+
+   #### Find the following line:
+   ```lua filename="settings.lua | Line: 33" {3}
+   SpecialCommands = {},
+   ```
+
+   #### Add/Remove your commands
+   Use the example below for formatting.
+
+   ```lua filename="settings.lua | Line: 33" {3}
+      SpecialCommands = {
+         {'/ooc', '**[OOC]:**'},
+         {'/me', '**[ME]:**'},
+         {'/fix', '**[FIX]:**'},
+         {'/dv', '**[DV]:**'},
+         {'/do', '**[DO]:**'},
+         {'/twt', '**[TWEET]:**'},
+    	   {'/news', '**[WEAZEL NEWS]:**'},
+    	   {'/ad', '**[ADVERTISEMENT]:**'},
+    	   {'/repair', '**[MECHANIC]:**'},
+    	   {'/dispatch', '**[DISPATCH]:**'},
+    	   {'/911', '**[911]: (CALLER ID: [ USERNAME_NEEDED_HERE | USERID_NEEDED_HERE ])**'},
+      },
+   ```
+
+   #### Save and profit!
+   Save your changes and restart the sever/resource!
+</Steps>
+
+---
+
+## Blacklisted Commands
+
+> Blacklisted commands will be ignored and never printed to **any** discord channel.
+
+<Steps>
+   ### Open the bots settings
+   Find and open the `settings.lua` file
+   ![Hmm](/examples/fivem2discord/settings-file.png)
+
+   ### Find the following line:
+   ```lua filename="settings.lua | Line: 50" {3}
+   SpecialCommands = {},
+   ```
+
+   ### Add/Remove your commands
+   Use the example below for formatting.
+
+   ```lua filename="settings.lua | Line: 50" {3}
+   BlacklistedCommands = {
+         '/jail', --[[ IGNORE BECAUSE IT CAN LEAK JAIL COMMAND PASSWORD  IF LOG CHANNEL IS NOT PRIVATE ]]
+         '/unjail' --[[ IGNORE BECAUSE IT CAN LEAK JAIL COMMAND PASSWORD  IF LOG CHANNEL IS NOT PRIVATE ]]
+   },
+   ```
+
+   ### Save and profit!
+   Save your changes and restart the sever/resource!
+</Steps>
+
+---
+
+## Own Commands
+
+> These commands will use a webhook seperate from the ones listed above,
+this is generally used if you for example want to send 911 commands to a "dispatch" channel
+
+<Steps>
+   ### Open the bots settings
+   Find and open the `settings.lua` file
+   ![Hmm](/examples/fivem2discord/settings-file.png)
+
+   ### Find the following line:
+   ```lua filename="settings.lua | Line: 59" {3}
+   OwnWebhookCommands = {},
+   ```
+
+   ### Add/Remove your commands
+   Use the example below for formatting.
+
+   ```lua filename="settings.lua | Line: 59" {3}
+   OwnWebhookCommands = {
+        {'/911', 'YOUR_WEBHOOK_HERE'},
+		  {'/dispatch', 'YOUR_WEBHOOK_HERE'},
+		  {'/me', 'YOUR_WEBHOOK_HERE'},
+		  {'/fix', 'YOUR_WEBHOOK_HERE'},
+		  {'/dv', 'YOUR_WEBHOOK_HERE'},
+		  {'/twt', 'YOUR_WEBHOOK_HERE'},
+		  {'/do', 'YOUR_WEBHOOK_HERE'},
+		  {'/news', 'YOUR_WEBHOOK_HERE'},
+		  {'/ad', 'YOUR_WEBHOOK_HERE'},
+		  {'/repair', 'YOUR_WEBHOOK_HERE'},
+    }
+   ```
+
+   ### Save and profit!
+   Save your changes and restart the sever/resource!
+</Steps>
+
+---
+
+## Text to speech commands
+> Text to speech commands will be sent as text to speech messages
+
+<Steps>
+   ### Open the bots settings
+   Find and open the `settings.lua` file
+   ![Hmm](/examples/fivem2discord/settings-file.png)
+
+   ### Find the following line:
+   ```lua filename="settings.lua | Line: 75" {3}
+   TextToSpeechCommands  = {},
+   ```
+
+   ### Add/Remove your commands
+   Use the example below for formatting.
+
+   ```lua filename="settings.lua | Line: 75" {3}
+   TextToSpeechCommands  = {
+        '/911',
+        '/dispatch'
+    }
+   ```
+
+   ### Save and profit!
+   Save your changes and restart the sever/resource!
+</Steps>
