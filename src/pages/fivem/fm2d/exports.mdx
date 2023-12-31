@@ -37,7 +37,7 @@ AddEventHandler('chatMessage', function(source, name, msg)
     if sm[1] == "/ooc" then
 		CancelEvent()
 		TriggerClientEvent('chatMessage', -1, "^6OOC | ^7" .. name, { 128, 128, 128 }, string.sub(msg,5))
-        exports['fivem2discord']:SendWebhookLogs('chat', GetPlayerName(id) .. ' [ID: ' .. GetPlayerServerId(id) .. ']', data.message,, 'steam', true) 
+        exports['fivem2discord']:SendWebhookLogs('chat', GetPlayerName(id) .. ' [ID: ' .. GetPlayerServerId(id) .. ']', data.message, 'steam', true) 
 	end
 end)
 ```
