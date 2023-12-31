@@ -1,0 +1,43 @@
+import { Callout } from 'nextra/components'
+
+## Exports
+We provide exports that can be used to interact with/send webhooks through FiveM2Discord
+using any other resource you have on your server and the setup is pretty straight forward!
+
+---
+
+| Option               | Type        | Description                                                                    |
+|----------------------|:-----------:|-------------------------------------------------------------------------------:|
+| CHANNEL              | string      | Webhook channel (one of: system, chat, kill)                                   |
+| NAME                 | string      | The name of the bot inside discord                                             |
+| MESSAGE              | string      | The message you want to send to discord                                        |
+| IMAGE_URL            | string      | Any image url you want to use for the bots avatar                              |
+| EXTERNAL             | boolean     | Is the event being triggered from a external resource (should be true here)    |
+
+<Callout type="info" emoji="ℹ️">
+      For the image url you can also use 'steam' or 'user' as an option and FiveM2Discord will either
+      attempt to get the users steam avatar or use the default avatar image. If you want to get the users
+      steam avatar you will need to set up your servers steam api key: [check out this guide](https://forum.cfx.re/t/using-the-steam-api-key-manually-on-the-server/805987)
+</Callout>
+
+### Usage
+You can call the `SendWebhookLogs` event using the following method.
+
+```lua
+exports['fivem2discord']:SendWebhookLogs('CHANNEL', 'NAME', 'MESSAGE', 'IMAGE_URL', EXTERNAL) 
+```
+
+### Example
+Using this method if you wanted to for example log a commands usage you can do so like this
+
+```lua filename="sv_chat.lua"
+AddEventHandler('chatMessage', function(source, name, msg)
+    sm = stringsplit(msg, " ");
+
+    if sm[1] == "/ooc" then
+		CancelEvent()
+		TriggerClientEvent('chatMessage', -1, "^6OOC | ^7" .. name, { 128, 128, 128 }, string.sub(msg,5))
+        exports['fivem2discord']:SendWebhookLogs('chat', GetPlayerName(id) .. ' [ID: ' .. GetPlayerServerId(id) .. ']', data.message,, 'steam', true) 
+	end
+end)
+```

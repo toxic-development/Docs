@@ -2,5 +2,8 @@
     "install": {
         "title": "Install"
     },
-    "setup": "Setup"
+    "setup": "Setup",
+    "exports": {
+        "title": "Exports"
+    }
 }
